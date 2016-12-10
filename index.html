@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        body {
+            overflow: hidden;
+        }
+        img {
+            display: block;
+            border: 0;
+        }
+        .clearfix {
+            zoom: 0;
+        }
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+        }
+        .img-box {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            position: relative;
+        }
+        .item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+        .img-box .before {
+            background: url(images/musicb.jpg);
+        }
+        .img-box .after {
+            background: url(images/musict.jpg);
+            transition: all .3s linear;
+            /* 旋转原点 */
+            transform-origin:bottom center;
+
+        }
+
+    </style>
+</head>
+<body>
+	<div class="img-box" id="img-box">
+		<div class="item before"></div>
+		<div class="item after" id="after"></div>
+	</div>
+	<audio src="1.mp3" id="audio"></audio>
+    <script>
+            var imgBox=document.getElementById("img-box");
+            var after=document.getElementById("after");
+            var audio=document.getElementById("audio");
+            var flag=true;
+            imgBox.onclick = function(){
+                if (flag) {
+                    after.style.transform = "rotateX(180deg)";
+                    after.style.transition = "all .3s linear";
+                    audio.play();
+                    flag = false;
+                }else {
+                    after.style.transform = "rotateX(0deg)";
+                    audio.pause();
+                    flag = true;
+                };
+            };
+    </script>
+</body>
+</html>
